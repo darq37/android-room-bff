@@ -17,20 +17,23 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
     @RequestMapping(method = RequestMethod.GET)
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return userService.getUsers();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{login}")
-    public ResponseEntity<User> getUser(@PathVariable String login){
+    public ResponseEntity<User> getUser(@PathVariable String login) {
         return userService.getUser(login)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-
-
+    @RequestMapping(method = RequestMethod.POST)
+    public User getUser(@RequestBody User user) {
+        return userService.saveUser(user);
+    }
 
 
 }

@@ -22,12 +22,12 @@ public class ShoppingListController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<ShoppingList> getLists(){
+    public List<ShoppingList> getLists() {
         return service.getShoppingLists();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public ResponseEntity<ShoppingList> getList(@PathVariable Long id){
+    public ResponseEntity<ShoppingList> getList(@PathVariable Long id) {
         return service.getShoppingList(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

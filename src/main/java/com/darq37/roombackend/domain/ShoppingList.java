@@ -1,32 +1,44 @@
 package com.darq37.roombackend.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity(name = "shopping_lists")
 public class ShoppingList {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     private String name;
+
     @OneToOne
     private User owner;
+
     @OneToMany
     private List<Product> products;
+
     private Date created;
+
     private Date edited;
 
     public ShoppingList() {
     }
 
-    public long getId() {
+
+    public ShoppingList(String name, User owner, List<Product> products) {
+        this.name = name;
+        this.owner = owner;
+        this.products = products;
+        this.created = new Date();
+        this.edited = new Date();
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

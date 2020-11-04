@@ -1,8 +1,8 @@
 package com.darq37.roombackend.controller;
 
 import com.darq37.roombackend.domain.SharedList;
-import com.darq37.roombackend.domain.User;
 import com.darq37.roombackend.service.SharedListService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,17 +16,18 @@ import java.util.List;
 public class SharedListController {
     private final SharedListService service;
 
+    @Autowired
     public SharedListController(SharedListService service) {
         this.service = service;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<SharedList> getLists(){
+    public List<SharedList> getLists() {
         return service.getSharedLists();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public ResponseEntity<SharedList> getList(@PathVariable Long id){
+    public ResponseEntity<SharedList> getList(@PathVariable Long id) {
         return service.getSharedList(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
