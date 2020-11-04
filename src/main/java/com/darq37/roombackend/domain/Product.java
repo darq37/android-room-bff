@@ -20,20 +20,15 @@ public class Product {
     public Product() {
     }
 
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
+    public Product(String name, String description) {
+        this.name = name;
         this.description = description;
+        this.created = new Date();
+        this.edited = new Date();
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -44,12 +39,20 @@ public class Product {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
+    public String getDescription() {
+        return description;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
     public Date getEdited() {
