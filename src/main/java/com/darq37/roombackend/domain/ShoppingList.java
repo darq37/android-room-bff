@@ -7,7 +7,7 @@ import java.util.List;
 @Entity(name = "shopping_lists")
 public class ShoppingList {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
