@@ -1,6 +1,8 @@
 package com.darq37.roombackend.domain;
 
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,6 +13,7 @@ public class Product {
     private Long id;
 
     @Column(unique = true)
+    @NonNull
     private String name;
 
     private String description;

@@ -1,6 +1,7 @@
 package com.darq37.roombackend.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -9,6 +10,7 @@ import javax.persistence.OneToOne;
 public class SharedList {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     @OneToOne

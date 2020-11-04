@@ -15,7 +15,7 @@ public class ShoppingList {
     @OneToOne
     private User owner;
 
-    @OneToMany
+    @ManyToMany
     private List<Product> products;
 
     private Date created;
