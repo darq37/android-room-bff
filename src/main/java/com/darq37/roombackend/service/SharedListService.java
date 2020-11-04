@@ -17,14 +17,17 @@ public class SharedListService {
         this.sharedListRepository = sharedListRepository;
     }
 
-    public List<SharedList> getSharedLists(){
+    public List<SharedList> getSharedLists() {
         return sharedListRepository.findAll();
     }
 
-    public Optional<SharedList> getSharedList(Long id){
+    public Optional<SharedList> getSharedList(Long id) {
         return sharedListRepository.findById(id);
     }
 
+    public SharedList saveSharedList(SharedList sharedList) {
+        return sharedListRepository.save(sharedList);
+    }
 
 
 }

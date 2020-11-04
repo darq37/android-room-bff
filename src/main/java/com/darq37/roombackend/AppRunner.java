@@ -30,17 +30,19 @@ public class AppRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         User user = new User("login", "password", "Dominik");
-        Product p1 = new Product();
-        p1.setName("p1name");
-        p1.setDescription("p1desc");
+        Product p1 = new Product("duck", "rubber duck");
+        Product p2 = new Product("orange", "delicious orange");
+        Product p3 = new Product("wood", "a plank of wood");
+
         List<Product> productList = new ArrayList<>();
         productList.add(p1);
+        productList.add(p2);
+        productList.add(p3);
 
         ShoppingList list = new ShoppingList("Lista Dominika", user, productList);
 
         userService.saveUser(user);
-        productService.saveProduct(p1);
-
+        productService.saveAll(productList);
         shoppingListService.saveList(list);
 
     }

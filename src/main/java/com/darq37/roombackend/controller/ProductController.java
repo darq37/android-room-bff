@@ -4,10 +4,7 @@ import com.darq37.roombackend.domain.Product;
 import com.darq37.roombackend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +28,11 @@ public class ProductController {
         return productService.getProduct(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public Product saveProduct(@RequestBody Product product) {
+        return productService.saveProduct(product);
     }
 
 
