@@ -32,6 +32,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)
     public User saveUser(@RequestBody User user) {
+        System.out.println("user created");
         return userService.saveUser(user);
     }
 
