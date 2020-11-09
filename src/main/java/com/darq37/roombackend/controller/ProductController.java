@@ -20,12 +20,13 @@ public class ProductController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Product> getProducts() {
-        System.out.println("Products synced");
+        System.out.println("Products retrieved.");
         return productService.getProducts();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public ResponseEntity<Product> getProducts(@PathVariable Long id) {
+        System.out.println(String.format("Product with id: '%s' retrieved.", id));
         return productService.getProduct(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -34,6 +35,12 @@ public class ProductController {
     @RequestMapping(method = RequestMethod.POST)
     public Product saveProduct(@RequestBody Product product) {
         return productService.saveProduct(product);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public List<Product> saveProducts(@RequestBody List<Product> products) {
+        System.out.println("Products saved.");
+        return productService.saveAll(products);
     }
 
 

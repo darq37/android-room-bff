@@ -21,12 +21,17 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> getUser(String login){
+    public Optional<User> getUser(String login) {
         return userRepository.findById(login);
     }
 
-    public User saveUser(User user){
+    public User saveUser(User user) {
         return userRepository.save(user);
     }
+
+    public List<User> saveAll(List<User> users) {
+        return userRepository.saveAll(users);
+    }
+
 
 }

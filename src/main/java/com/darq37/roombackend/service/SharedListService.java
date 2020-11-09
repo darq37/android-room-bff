@@ -29,5 +29,9 @@ public class SharedListService {
         return sharedListRepository.save(sharedList);
     }
 
+    public List<SharedList> saveAll(List<SharedList> lists) {
+        return sharedListRepository.saveAll(lists);
+    }
+
 
 }

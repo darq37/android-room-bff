@@ -20,13 +20,13 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<User> getUsers() {
-        System.out.println("users synced");
+        System.out.println("Users retrieved.");
         return userService.getUsers();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{login}")
     public ResponseEntity<User> getUser(@PathVariable String login) {
-        System.out.println(String.format("GET User %s accepted", login));
+        System.out.println(String.format("User with login: '%s' retrieved.", login));
         return userService.getUser(login)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -34,8 +34,14 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)
     public User saveUser(@RequestBody User user) {
-        System.out.println("user created");
+        System.out.println("User created.");
         return userService.saveUser(user);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public List<User> saveAll(@RequestBody List<User> users) {
+        System.out.println("Users saved.");
+        return userService.saveAll(users);
     }
 
 

@@ -20,12 +20,13 @@ public class ShoppingListController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<ShoppingList> getLists() {
-        System.out.println("Shopping lists synced");
+        System.out.println("Shopping lists retrieved.");
         return service.getShoppingLists();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public ResponseEntity<ShoppingList> getList(@PathVariable Long id) {
+        System.out.println(String.format("Shopping list with id: '%s' retrieved.", id));
         return service.getShoppingList(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -34,6 +35,12 @@ public class ShoppingListController {
     @RequestMapping(method = RequestMethod.POST)
     public ShoppingList saveList(@RequestBody ShoppingList shoppingList) {
         return service.saveList(shoppingList);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public List<ShoppingList> saveAll(@RequestBody List<ShoppingList> lists) {
+        System.out.println("Shopping lists saved.");
+        return service.saveAll(lists);
     }
 
 }

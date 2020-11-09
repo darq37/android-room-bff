@@ -20,12 +20,13 @@ public class SharedListController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<SharedList> getLists() {
-        System.out.println("Shared lists synced");
+        System.out.println("Shared lists retrieved.");
         return service.getSharedLists();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public ResponseEntity<SharedList> getList(@PathVariable Long id) {
+        System.out.println(String.format("Shared list with id: '%s' retrieved.", id));
         return service.getSharedList(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -34,6 +35,12 @@ public class SharedListController {
     @RequestMapping(method = RequestMethod.POST)
     public SharedList saveSharedList(@RequestBody SharedList list) {
         return service.saveSharedList(list);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public List<SharedList> saveAll(@RequestBody List<SharedList> lists) {
+        System.out.println("Shared lists saved.");
+        return service.saveAll(lists);
     }
 
 }

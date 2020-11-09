@@ -30,4 +30,8 @@ public class ShoppingListService {
         return shoppingListRepository.save(list);
     }
 
+    public List<ShoppingList> saveAll(List<ShoppingList> lists) {
+        return shoppingListRepository.saveAll(lists);
+    }
+
 }
