@@ -20,6 +20,7 @@ public class ShoppingListController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<ShoppingList> getLists() {
+        System.out.println("Shopping lists synced");
         return service.getShoppingLists();
     }
 

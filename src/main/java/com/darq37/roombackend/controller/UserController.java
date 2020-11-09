@@ -20,11 +20,13 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<User> getUsers() {
+        System.out.println("users synced");
         return userService.getUsers();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{login}")
     public ResponseEntity<User> getUser(@PathVariable String login) {
+        System.out.println(String.format("GET User %s accepted", login));
         return userService.getUser(login)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

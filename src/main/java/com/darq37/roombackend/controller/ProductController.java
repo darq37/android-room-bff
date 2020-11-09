@@ -20,6 +20,7 @@ public class ProductController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Product> getProducts() {
+        System.out.println("Products synced");
         return productService.getProducts();
     }
 
