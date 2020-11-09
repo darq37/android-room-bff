@@ -20,6 +20,7 @@ public class SharedListController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<SharedList> getLists() {
+        System.out.println("Shared lists synced");
         return service.getSharedLists();
     }
 
